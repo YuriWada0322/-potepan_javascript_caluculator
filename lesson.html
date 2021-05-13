@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Calculator</title>
+</head>
+<body>
+  <input type="text" id="result">
+  <div>
+    <input type="button" value="7" onclick="edit(this)">
+    <input type="button" value="8" onclick="edit(this)">
+    <input type="button" value="9" onclick="edit(this)">
+    <input type="button" value="+" onclick="edit(this)">
+  </div>
+  <div>
+    <input type="button" value="4" onclick="edit(this)">
+    <input type="button" value="5" onclick="edit(this)">
+    <input type="button" value="6" onclick="edit(this)">
+    <input type="button" value="-" onclick="edit(this)">
+  </div>
+  <div>
+    <input type="button" value="1" onclick="edit(this)">
+    <input type="button" value="2" onclick="edit(this)">
+    <input type="button" value="3" onclick="edit(this)">
+    <input type="button" value="*" onclick="edit(this)">
+  </div>
+  <div>
+    <input type="button" value="0" onclick="edit(this)">
+    <input type="button" value="00" onclick="edit(this)">
+    <input type="button" value="." onclick="edit(this)">
+    <input type="button" value="/" onclick="edit(this)">
+  </div>
+   <div>
+    <input type="button" value="   AC   " onclick="update('')">
+    <input type="button" value="   =   " onclick="calc()">
+  </div>
+  
+  <script language="javascript" type="text/javascript">
+　  let result = document.getElementById("result");
+    function edit(elem) {
+     let v=result.value +elem.value;;
+     v = v.replace(/\D(\D)/,'$1');
+     v = v.replace(/^[\*\/]/,'');
+     v = v.replace(/(^|[\*\+\-\/])0(?=\d)/,'$1');
+     v = v.replace(/(\d\.\d*)\./,'$1');
+     result.value =v;
+    }
+    function calc() {
+      result.value = new Function("return " + result.value)();
+    }
+    function update(_V){
+      document.querySelector('input').value=_V
+    }
+    
+     </script>
+</body>
+</html> 
